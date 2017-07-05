@@ -1,4 +1,4 @@
-package utils
+package wooUtils
 
 import (
 	"errors"
@@ -39,7 +39,7 @@ func Try(fun func(), handler func(interface{})) {
 	fun()
 }
 
-//GetCurrentPath 获取当前路径
+//GetCurrentPath 获取runtime路径
 func GetCurrentPath() (string, error) {
 	file, err := exec.LookPath(os.Args[0])
 	if err != nil {
