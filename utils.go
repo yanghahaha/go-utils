@@ -29,7 +29,7 @@ func StrFormatTime(instr string) (outstr string) {
 	return
 }
 
-//Try 错误处理 try ...catch
+//Try 错误处理 try ...catch 仿
 func Try(fun func(), handler func(interface{})) {
 	defer func() {
 		if err := recover(); err != nil {
