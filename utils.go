@@ -2,7 +2,6 @@ package wooUtils
 
 import (
 	"errors"
-	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -68,6 +67,5 @@ func GetWeekMondayTime() (mtime time.Time) {
 	if weekDay == 0 {
 		weekDay = 7
 	}
-	fmt.Println(nowTime.Unix())
 	return nowTime.Add(time.Duration(weekDay-1) * -86400 * time.Second)
 }
