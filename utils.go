@@ -2,6 +2,7 @@ package wooUtils
 
 import (
 	"errors"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -57,4 +58,16 @@ func GetCurrentPath() (string, error) {
 		return "", errors.New("error: Can't find \\ or /")
 	}
 	return string(path[0 : i+1]), nil
+}
+
+//GetWeekMondayTime 获取本周一的同一时间的时间戳
+//因为西方计算方式每周从周日开始, 中国计算方式一般从周一开始, 所以遇到周日需要特别考虑
+func GetWeekMondayTime() (mtime time.Time) {
+	nowTime := time.Now()
+	weekDay := int(nowTime.Weekday())
+	if weekDay == 0 {
+		weekDay = 7
+	}
+	fmt.Println(nowTime.Unix())
+	return nowTime.Add(time.Duration(weekDay-1) * -86400 * time.Second)
 }
