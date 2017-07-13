@@ -83,19 +83,9 @@ func rowsToSlice(rows sql.Rows) []map[string]string {
 var _instance *MysqlDatabase
 
 //GetDb 获取mysql单例
-func getDb() *MysqlDatabase {
+func GetDb() *MysqlDatabase {
 	if _instance == nil {
 		_instance = new(MysqlDatabase)
 	}
 	return _instance
-}
-
-//Config 配置数据库
-func Config(uname string, passwd string, host string, port string, database string, charset string) {
-	getDb().Config(uname, passwd, host, port, database, charset)
-}
-
-//Query 查询
-func Query(sqlstr string) ([]map[string]string, error) {
-	return getDb().Query(sqlstr)
 }
