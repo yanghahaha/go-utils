@@ -120,6 +120,11 @@ func (log *ELogger) initOutput(outConfigStr string) (err error) {
 }
 
 //Config 配置logger
+// LEVEL_ERROR   = 1
+// LEVEL_WARNING = 2
+// LEVEL_INFO    = 3
+// LEVEL_DEBUG   = 4
+// file:///xxx/xxx/xxx/%y%m%d|stdOut
 func (log *ELogger) Config(level int, outstr string) bool {
 	if level != LEVEL_DEBUG && level != LEVEL_ERROR && level != LEVEL_WARNING && level != LEVEL_INFO {
 		level = LEVEL_ERROR

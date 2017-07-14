@@ -24,7 +24,7 @@ func (db *MysqlDatabase) Query(sqlstr string) ([]map[string]string, error) {
 		return nil, err
 	}
 	defer dbo.Close()
-	return rowsToSlice(*rows), nil
+	return rowsToSlice(rows), nil
 }
 
 //Config set config of mysqldb instance
@@ -39,7 +39,7 @@ func (db *MysqlDatabase) Config(
 
 }
 
-func rowsToSlice(rows sql.Rows) []map[string]string {
+func rowsToSlice(rows *sql.Rows) []map[string]string {
 
 	var slice []map[string]string
 	columns, err := rows.Columns()
