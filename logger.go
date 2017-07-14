@@ -136,14 +136,14 @@ func (log *ELogger) Config(level int, outstr string) bool {
 	return true
 }
 
-var _instance *ELogger
+var _loggerInstance *ELogger
 
 //GetLogger 获取logger单例
 func GetLogger() *ELogger {
-	if _instance == nil {
-		_instance = new(ELogger)
+	if _loggerInstance == nil {
+		_loggerInstance = new(ELogger)
 	}
-	return _instance
+	return _loggerInstance
 }
 
 //StrFormatTime 字符串格式化为当前时间
