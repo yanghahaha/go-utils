@@ -28,10 +28,10 @@ type ELogger struct {
 	loggerList []logger.Logger
 }
 
-func (log *ELogger) debug(msg string) bool {
+func (log *ELogger) Debug(msg string) bool {
 	if log.inConfig {
 		time.Sleep(10000000)
-		log.debug(msg)
+		log.Debug(msg)
 	}
 	if log.level >= LEVEL_DEBUG {
 		len := len(log.loggerList)
@@ -42,10 +42,10 @@ func (log *ELogger) debug(msg string) bool {
 	}
 	return false
 }
-func (log *ELogger) info(msg string) bool {
+func (log *ELogger) Info(msg string) bool {
 	if log.inConfig {
 		time.Sleep(10000000)
-		log.info(msg)
+		log.Info(msg)
 	}
 	if log.level >= LEVEL_INFO {
 		len := len(log.loggerList)
@@ -56,10 +56,10 @@ func (log *ELogger) info(msg string) bool {
 	}
 	return false
 }
-func (log *ELogger) error(msg string) bool {
+func (log *ELogger) Error(msg string) bool {
 	if log.inConfig {
 		time.Sleep(10000000)
-		log.error(msg)
+		log.Error(msg)
 	}
 	if log.level >= LEVEL_ERROR {
 		len := len(log.loggerList)
@@ -70,10 +70,10 @@ func (log *ELogger) error(msg string) bool {
 	}
 	return false
 }
-func (log *ELogger) warning(msg string) bool {
+func (log *ELogger) Warning(msg string) bool {
 	if log.inConfig {
 		time.Sleep(10000000)
-		log.warning(msg)
+		log.Warning(msg)
 	}
 	if log.level >= LEVEL_WARNING {
 		len := len(log.loggerList)
