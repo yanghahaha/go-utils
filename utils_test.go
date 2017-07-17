@@ -19,5 +19,6 @@ func Test_Try(t *testing.T) {
 }
 
 func Test_GetCurrentPath(t *testing.T) {
-	fmt.Println(GetCurrentPath())
+	// fmt.Println(GetCurrentPath())
+
 }

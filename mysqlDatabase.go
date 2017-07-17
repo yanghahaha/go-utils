@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"strings"
 
+	"errors"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -13,17 +15,17 @@ type MysqlDatabase struct {
 	connStr string
 }
 
+var dbo *sql.DB
+
 //Query query from mysqldb by sql
 func (db *MysqlDatabase) Query(sqlstr string) ([]map[string]string, error) {
-	dbo, err := sql.Open("mysql", db.connStr)
-	if err != nil {
-		return nil, err
+	if dbo == nil {
+		return nil, errors.New("Dbo is nil")
 	}
 	rows, err := dbo.Query(sqlstr)
 	if err != nil {
 		return nil, err
 	}
-	defer dbo.Close()
 	return rowsToSlice(rows), nil
 }
 
@@ -34,9 +36,14 @@ func (db *MysqlDatabase) Config(
 	host string,
 	port string,
 	database string,
-	charset string) {
+	charset string) (err error) {
 	db.connStr = uname + ":" + passwd + "@tcp(" + host + ":" + port + ")/" + database + "?charset=" + charset
-
+	dbo, err = sql.Open("mysql", db.connStr)
+	if err != nil {
+		dbo = nil
+		return err
+	}
+	return nil
 }
 
 func rowsToSlice(rows *sql.Rows) []map[string]string {
